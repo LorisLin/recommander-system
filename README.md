@@ -2,8 +2,8 @@
 
 ## Introduction
 
-L'objectif de ce projet est de fournir un système de recommandation sur les films pour deux utilisateurs en couple. Pour ce faire, on va utiliser deux databsets "MovieLens" et "IMBb Dataset" afin de connaître les goûts de chaque utilisateurs et également pour avoir plus d'informations sur les différents films que l'on va recommander.
-Ainsi, notre travail sera de concevoir un modèle et un algorithme pouvant recommander des films et satisfaire les goûts des deux amoureux. Il sera donc important de combiner les préférances de chaque couple.
+L'objectif de ce projet est de fournir un système de recommandation sur les films pour deux utilisateurs en couple. Pour ce faire, on va utiliser deux jeux de données "MovieLens" et "IMBb Dataset" afin de connaître les goûts de chaque utilisateurs, et également avoir plus d'informations sur les différents films que l'on va recommander.
+Ainsi, notre travail sera de concevoir un algorithme pouvant recommander des films et satisfaire les goûts des deux amoureux. Il sera donc important de combiner les préférances de chaque couple.
 
 ## Collecte et prétraitement des données
 
@@ -44,7 +44,7 @@ Pour relier les jeux de données "MovieLens", la jointure se fait par "MovieID" 
 
 ## Ingénierie des caractéristiques
 
-On va extraire les genres, les réalisateurs, les notes, l'année de production, le titre et l'identifiant de chaque films à partir de la jointure évoqué précédemment. puis on va fusionner les genres entre le jeux de données "MovieLens" et "IMDb Dataset".
+On va extraire les genres, les réalisateurs, les notes, l'année de production, le titre et l'identifiant de chaque films à partir de la jointure évoqué précédemment. De plus il est intéressant de fusionner les genres des films entre le jeux de données "MovieLens" et "IMDb Dataset".
 
 ## Développement du modèle
 
@@ -65,9 +65,7 @@ On aurait également pu prendre l'algorithme ALS (Alternating Least Squares) pou
 
 ### Paramètres du modèle
 
-Pour lire les données de notation, nous avons inséré un paramètre "rating_scale" pour avoir fixer un intervalle de notation.
-
-reader = Reader(rating_scale=(1, 5))
+Pour lire les données de notation, nous avons inséré un paramètre "rating_scale" afin de fixer un intervalle de notation.
 
 Dans le modèle SVD, j'ai choisi de ne pas mettre de paramètre et laisser les valeurs par défauts.
 Soumettre un nombre trop élevé par exemple de facteurs latents (n_factors) pour la factorisation, peut provoquer un risque d'overfitting.
@@ -96,4 +94,11 @@ De plus, le RMSE obtenu est d'environ 0.872, indiquant une précision de prédic
 
 ## Perspectives d'Amélioration
 
-Pour améliorer encore le système, il pourrait être bénéfique d'intégrer des fonctionnalités supplémentaires telles que les acteurs principaux ou bien la région d'où provient le film ou les utilisateurs, et d'élargir la base de données de films pour inclure une plus grande diversité de genres et de styles cinématographiques comme évoqué dans la partie précédente "Collecte et prétraitement des données".
+Pour améliorer le système, comme évoqué dans la partie précédente "Collecte et prétraitement des données", il pourrait être bénéfique d'intégrer des fonctionnalités supplémentaires telles que :
+- Les acteurs principaux
+- La région d'où provient le film ou les utilisateurs
+- Elargir la base de données de films pour inclure une plus grande diversité de genres et de styles cinématographiques
+- Préférences sur la langue des films
+- ...
+
+  
